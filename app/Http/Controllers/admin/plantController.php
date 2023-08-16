@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Controllers\admin\categoryController;
+use App\Models\category;
 use App\Models\plant;
 use Illuminate\Http\Request;
 
@@ -13,8 +15,10 @@ class plantController extends Controller
      */
     public function index()
     {
-        return view('admin.plant.add');
+        
          $plants = Plant::all();
+         return view('admin.plant.index',compact('plants'));
+
          return response()->json($plants);
     }
 
@@ -23,7 +27,7 @@ class plantController extends Controller
      */
     public function create()
     {
-        $categories=category::all();
+        $categories =category::all();
         return view('admin.plant.add',compact('categories'));
 
     }

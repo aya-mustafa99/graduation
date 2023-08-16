@@ -12,8 +12,14 @@ class postController extends Controller
      */
     public function index()
     {
+  
+
+       
         $posts=post::all();
+        //To dashboard
         return view('admin.post.index',compact('posts'));
+        //To api
+        return response()->json($posts);
     }
 
     /**
@@ -37,7 +43,14 @@ class postController extends Controller
      */
     public function show(post $post)
     {
-        //
+        $post = Post::find($id);
+
+        if (!$post) {
+            return response()->json(['error' => 'Post not found'], 404);
+        }
+
+      return response()->json($post);
+    
     }
 
     /**

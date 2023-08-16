@@ -51,55 +51,78 @@ plant
                 </tr>
             </thead>
             <tbody>
+                @foreach($plants as $plant)
+
                 <tr>
                     <td>
-                       
+                      {{$loop->iteration}}
+                    </td>
+                    <td >
+                        <span class="">{{$plant->category->category_name}}</span>
                     </td>
                     <td>
                         <a>
-                           
+                            {{$plant->name}}
                         </a>
-                        <br/>
                       
-                    </td>
-                    <td>
-                       
-                        </ul>
-                    </td>
-                    <td>
-                       
-                        </div>
-                       
                     </td>
                     <td >
-                      
+                        <span class=""> {{$plant->care_details}}</span>
                     </td>
+                  
+                    <td >
+                        <span class="">{{$plant->season}}</span>
+                    </td>
+                    <td >
+                        <span class="">{{$plant->medical_benefit}}</span>
+                    </td>
+                    <td >
+                        <span class="">{{$plant->short_description}}</span>
+                    </td>
+                    <td>
+                        <span class="">{{$plant->last_update}}</span>
+                    </td>
+                    {{-- <td>
+                        <ul class="list-inline">
+                            <li class="list-inline-item">
+                                <img alt="Avatar" class="table-avatar" src=" {{asset('posts_Image/'.$post->small_image)}}">
+                            </li>
+
+                        </ul>
+                    </td> --}}
+                    
+                 
+                   
                     <td class="project-actions text-right">
-                        <a class="btn btn-primary btn-sm" href="#">
+                        <a class="btn btn-primary btn-sm" href="{{route('plant.show',$plant)}}">
                             <i class="fas fa-folder">
                             </i>
                             View
                         </a>
-                        <a class="btn btn-info btn-sm" href="#">
+                        <a class="btn btn-info btn-sm" href="{{route('plant.edit',$plant)}}">
                             <i class="fas fa-pencil-alt">
                             </i>
                             Edit
                         </a>
-                        <a class="btn btn-danger btn-sm" href="#">
-                            <i class="fas fa-trash">
-                            </i>
-                            Delete
-                        </a>
+                       <form  method="post" action="{{route('post.destroy',$plant)}}">
+                            @method('DELETE')
+                            @csrf
+                           <button type="submit" class="btn btn-danger btn-sm" >
+
+                           Delete
+                        </button>
+                       </form>
                     </td>
+
                 </tr>
-             
-            </tbody>
-        </table>
-      </div>
-      <!-- /.card-body -->
+                @endforeach
+                </tbody>
+            </table>
+        </div>
+        <!-- /.card-body -->
     </div>
     <!-- /.card -->
 
-  </section>
-  <!-- /.content -->
+</section>
+<!-- /.content -->
 @endsection

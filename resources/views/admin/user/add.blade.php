@@ -1,9 +1,9 @@
 @extends('admin.layout.master')
 @section('title')
-   add plant page
+   add user page
 @endsection
 @section('title_page')
-    add plant page
+    add user page
 @endsection
 
 @section('content')

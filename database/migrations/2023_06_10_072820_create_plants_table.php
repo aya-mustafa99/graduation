@@ -14,13 +14,12 @@ return new class extends Migration
         Schema::create('plants', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->string('care_details');
+            $table->text('care_details');
             $table->string('season');
-            $table->string('medical_benefit');
-            $table->string('short_description');
-            $table->string('last_update');
+            $table->text('medical_benefit');
+            $table->text('short_description');
+            $table->string('last_update')->nullable();;
             $table->unsignedBigInteger('category_id');
-           
             $table->foreign('category_id')->references('id')->on('categories');
             $table->timestamps();
             
