@@ -18,6 +18,7 @@ class planttApi extends Controller
         return response()->json($plants);
 
 
+        
     }
 
     /**
