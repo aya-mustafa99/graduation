@@ -22,12 +22,12 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::get('/categories', [categoryController::class, 'index']);
-Route::get('/categories/{id}', [categoryController::class, 'show']);
-Route::get('/categories/search', [categoryController::class, 'search']);
-Route::get('/plants', [plantController::class, 'index']);
-Route::get('/plants/{id}', [plantController::class, 'show']);
-Route::get('/plants/by-category/{categoryId}', [plantController::class, 'getByCategoryId']);
+Route::get('/categories', [categoryApi::class, 'index']);
+Route::get('/categories/{id}', [categoryApi::class, 'show']);
+Route::get('/categories/search', [categoryApi::class, 'search']);
+Route::get('/plants', [planttApi::class, 'index']);
+Route::get('/plants/{id}', [planttApi::class, 'show']);
+Route::get('/plants/by-category/{categoryId}', [planttApi::class, 'getByCategoryId']);
 Route::post('/login', [logincontroller::class, 'login']);
 
 Route::get('/posts', [postController::class, 'index']);

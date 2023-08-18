@@ -4,20 +4,21 @@ namespace App\Http\Controllers\API;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Models\post;
 
-class category extends Controller
+
+
+class postApi extends Controller
 {
     /**
      * Display a listing of the resource.
      */
-
-
-     /// Api to get all category ///
-     
     public function index()
     {
-        $categories = category::all();
-        return response()->json($categories);
+        $posts=post::all();
+        return response()->json($posts);
+
+
     }
 
     /**
@@ -31,21 +32,16 @@ class category extends Controller
     /**
      * Display the specified resource.
      */
-
-
-
-     /// Api To get category by Id ///
-
-
-    public function show(string $id)
+    public function show(post $post)
     {
-        $category = category::find($id);
+         $post = Post::find($id);
 
-        if (!$category) {
-            return response()->json(['message' => 'Category not found'], 404);
+        if (!$post) {
+            return response()->json(['error' => 'Post not found'], 404);
         }
 
-        return response()->json($category);
+      return response()->json($post);
+    
     }
 
     /**

@@ -16,10 +16,9 @@ class plantController extends Controller
     public function index()
     {
         
-         $plants = Plant::all();
+         $plants = plant::all();
          return view('admin.plant.index',compact('plants'));
 
-         return response()->json($plants);
     }
 
     /**
@@ -63,13 +62,7 @@ class plantController extends Controller
 
     public function show($id)
     {
-        $plant = Plant::find($id);
-
-        if (!$plant) {
-            return response()->json(['message' => 'Plant not found'], 404);
-        }
-
-        return response()->json($plant);
+       //
     }
 
     public function getByCategoryId($categoryId)
